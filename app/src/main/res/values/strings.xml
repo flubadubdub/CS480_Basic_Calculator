@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">CS480_Basic_Calculator</string>
+    <string name="strSignChange">+/-</string>
+    <string name="strClear">Clear</string>
+    <string name="strParentheses">( )</string>
+    <string name="strExponent"><![CDATA[X <sup><small> y </small></sup>]]></string>
+    <string name="strDivide">÷</string>
+    <string name="strSeven">7</string>
+    <string name="strEight">8</string>
+    <string name="strNine">9</string>
+    <string name="strMultiply">×</string>
+    <string name="strFour">4</string>
+    <string name="strFive">5</string>
+    <string name="strSix">6</string>
+    <string name="strSubtract">-</string>
+    <string name="strOne" >1</string>
+    <string name="strTwo">2</string>
+    <string name="strThree">3</string>
+    <string name="strAdd">+</string>
+    <string name="strSign">±</string>
+    <string name="strZero">0</string>
+    <string name="strDecimal">.</string>
+    <string name="strEquals">=</string>
+</resources>
