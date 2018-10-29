@@ -3,7 +3,7 @@
     <string name="strSignChange">+/-</string>
     <string name="strClear">Clear</string>
     <string name="strParentheses">( )</string>
-    <string name="strExponent"><![CDATA[X <sup><small> y </small></sup>]]></string>
+    <string name="strExponent">y^x</string>
     <string name="strDivide">÷</string>
     <string name="strSeven">7</string>
     <string name="strEight">8</string>

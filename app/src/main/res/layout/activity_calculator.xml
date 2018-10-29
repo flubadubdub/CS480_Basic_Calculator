@@ -18,6 +18,7 @@
         android:gravity="bottom"
         android:orientation="vertical"
         android:visibility="visible"
+        android:background="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -26,6 +27,7 @@
             android:id="@+id/layoutRowA"
             android:layout_width="match_parent"
             android:layout_height="76dp"
+            android:background="@android:color/background_light"
             android:orientation="horizontal">
 
             <Button
@@ -36,13 +38,16 @@
                 android:layout_weight="1"
                 android:text="@string/strClear"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textSize="18sp"
                 android:visibility="visible" />
 
             <Space
                 android:id="@+id/spcClearParentheses"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                android:background="@android:color/darker_gray"
+                android:visibility="visible" />
 
             <Button
                 android:id="@+id/btnParentheses"
@@ -50,35 +55,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/strParentheses" />
+                android:text="@string/strParentheses"
+                android:textSize="18sp" />
 
             <Space
                 android:id="@+id/spcParenthesesExponent"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/btnExponent"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:text="@string/strExponent"
+                android:textSize="18sp" />
 
             <Space
                 android:id="@+id/spcExponentDivide"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                android:background="@android:color/darker_gray" />
 
             <Button
-                android:id="@+id/buttonDivide"
+                android:id="@+id/btnDivide"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/strDivide"
-                android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -93,13 +104,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/strSeven" />
 
             <Space
                 android:id="@+id/spcSevenEight"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                tools:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/btnEight"
@@ -107,13 +120,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/strEight" />
 
             <Space
                 android:id="@+id/spcEightNine"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/btnNine"
@@ -121,13 +136,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/strNine" />
 
             <Space
                 android:id="@+id/spcNineMultiply"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/btnMultiply"
@@ -135,6 +152,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/strMultiply" />
         </LinearLayout>
 
@@ -150,13 +168,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/strFour" />
 
             <Space
                 android:id="@+id/spcFourFive"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/btnFive"
@@ -164,13 +184,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/strFive" />
+                android:text="@string/strFive"
+                android:textSize="18sp" />
 
             <Space
                 android:id="@+id/spcFiveSix"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/btnSix"
@@ -178,13 +200,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/strSix" />
+                android:text="@string/strSix"
+                android:textSize="18sp" />
 
             <Space
                 android:id="@+id/spcSixSubtract"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/btnSubtract"
@@ -192,6 +216,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/strSubtract" />
 
         </LinearLayout>
@@ -208,13 +233,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/strOne" />
 
             <Space
                 android:id="@+id/spcOneTwo"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/btnTwo"
@@ -222,13 +249,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/strTwo" />
 
             <Space
                 android:id="@+id/spcTwoThree"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/btnThree"
@@ -236,13 +265,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/strThree" />
 
             <Space
                 android:id="@+id/spcThreeAdd"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/btnAdd"
@@ -250,6 +281,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/strAdd" />
         </LinearLayout>
 
@@ -265,13 +297,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/strSign" />
 
             <Space
                 android:id="@+id/spcSignZero"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/btnZero"
@@ -279,13 +313,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/strZero" />
 
             <Space
                 android:id="@+id/spcZeroDecimal"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/btnDecimal"
@@ -293,13 +329,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/strDecimal" />
 
             <Space
                 android:id="@+id/spcDecimalEquals"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="0.1"
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/btnEquals"
@@ -307,8 +345,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/strEquals" />
         </LinearLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtInput"
+        android:layout_width="355dp"
+        android:layout_height="94dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
