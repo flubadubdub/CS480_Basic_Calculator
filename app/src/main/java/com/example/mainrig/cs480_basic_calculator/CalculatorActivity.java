@@ -15,6 +15,10 @@ public class CalculatorActivity extends AppCompatActivity {
     //when the user pressed a button, the button's corresponding action is added to
     //the string, to be parsed and then calculated as a mathematical expression later.
     StringBuilder input = new StringBuilder("");
+    StringBuilder output = new StringBuilder("");
+
+    //counter for number of open parentheses
+    private int numOpenParentheses = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,25 +116,62 @@ public class CalculatorActivity extends AppCompatActivity {
         });
         buttonAdd.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                input.append("+");
+                //if input is empty, do not append operator
+                if(isEmpty(input)){
+                    return;
+                }
+                //check to see if another operator was just added. if so, do nothing.
+                else if(isNum(input.charAt(input.length() - 1))) {
+                    input.append("+");
+                    textViewInput.setText(input);
+                }
+                else
+                    overwriteOp('+');
                 textViewInput.setText(input);
             }
         });
         buttonSubtract.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                input.append("-");
+                //if input is empty, do not append operator
+                if(isEmpty(input)){
+                    return;
+                }
+                //check to see if another operator was just added. if so, do nothing.
+                else if(isNum(input.charAt(input.length() - 1)))
+                    input.append("-");
+
+                else
+                    overwriteOp('-');
                 textViewInput.setText(input);
             }
         });
         buttonMultiply.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                input.append("×");
+                //if input is empty, do not append operator
+                if(isEmpty(input)){
+                    return;
+                }
+                //check to see if another operator was just added. if so, do nothing.
+                else if(isNum(input.charAt(input.length() - 1)))
+                    input.append("×");
+
+                else
+                    overwriteOp('×');
                 textViewInput.setText(input);
             }
         });
         buttonDivide.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                input.append("÷");
+                //if input is empty, do not append operator
+                if(isEmpty(input)){
+                    return;
+                }
+                //check to see if another operator was just added. if so, do nothing.
+                else if(isNum(input.charAt(input.length() - 1)))
+                    input.append("÷");
+
+                else
+                    overwriteOp('÷');
                 textViewInput.setText(input);
             }
         });
@@ -138,13 +179,15 @@ public class CalculatorActivity extends AppCompatActivity {
             public void onClick(View v){
                 input = new StringBuilder("");
                 textViewInput.setText(input);
+                numOpenParentheses = 0;
             }
         });
         buttonSign.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 //if input is empty, append negative sign change
                 if(input.length() == 0){
-                    input.append("(-");
+                    input.append("(˗");
+                    numOpenParentheses++;
                     textViewInput.setText(input);
                     return;
                 }
@@ -153,18 +196,21 @@ public class CalculatorActivity extends AppCompatActivity {
                     char current = input.charAt(i);
                     if(!isNum(current) && !(current == '.')){
                         //check if non-numeric character is part of a previously added sign change
-                        if(current == '-' && input.charAt(i - 1) == '('){
+                        if(current == '˗' && input.charAt(i - 1) == '('){
                                 input.delete(i-1, i+1);
+                                numOpenParentheses--;
                                 textViewInput.setText(input);
                                 break;
                         }
                         //if not, put sign change ahead of current index
-                        input.insert(i+1, "(-");
+                        input.insert(i+1, "(˗");
+                        numOpenParentheses++;
                         textViewInput.setText(input);
                         break;
                     }
                     if(i == 0){
-                        input.insert(0, "(-");
+                        input.insert(0, "(˗");
+                        numOpenParentheses++;
                         textViewInput.setText(input);
                         break;
                     }
@@ -174,47 +220,111 @@ public class CalculatorActivity extends AppCompatActivity {
         buttonDecimal.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 //if input is empty, append "0."
-                if(input.length() == 0){
+                if(isEmpty(input)){
                     input.append("0.");
-                    textViewInput.setText(input);
-                    return;
                 }
                 //if current character is a number, check that current's number is not part of an
                 //existing decimal point number.
-                if(isNum(input.charAt(input.length() - 1))){
+                else if(isNum(input.charAt(input.length() - 1))){
                     for(int i = input.length() - 1; i >= 0; i--){
                         //if this is already an existing decimal point number, do nothing
                         if(input.charAt(i) == '.'){
-                            return;
+                            break;
                         }
                         else if(!isNum(input.charAt(i)) || i == 0){
                             input.append('.');
-                            textViewInput.setText(input);
-                            return;
+                            break;
                         }
                     }
                 }
+                //if current character is a closing parentheses, append "×0." to input
+                else if(input.charAt(input.length() - 1) == ')'){
+                    input.append("×0.");
+                }
                 else{
                     input.append("0.");
+                }
+                textViewInput.setText(input);
+            }
+        });
+        buttonExponent.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                //if input is empty, do not append operator
+                if(isEmpty(input)){
+                    return;
+                }
+                //check to see if another operator was just added. if so, do nothing.
+                else if(isNum(input.charAt(input.length() - 1))) {
+                    input.append("^(");
+                    numOpenParentheses++;
                     textViewInput.setText(input);
+                    return;
+                }
+                else
+                    return;
+            }
+        });
+        buttonParentheses.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                //if input is empty, or character at the end of input is an operator or
+                // opening parentheses, append open parentheses
+                if(isEmpty(input) || isOperator(input.charAt(input.length() - 1))
+                        || input.charAt(input.length() - 1) == '('){
+                    input.append("(");
+                    numOpenParentheses++;
+                    textViewInput.setText(input);
+                }
+                //if character at the end of input is a number, check to see if an opening
+                //parentheses precedes that number.
+                else{
+                    if(numOpenParentheses != 0){
+                        input.append(")");
+                        numOpenParentheses--;
+                        textViewInput.setText(input);
+                    }
+                    //should the loop finish without returning, append "×(" to input
+                    else {
+                        input.append("×(");
+                        numOpenParentheses++;
+                        textViewInput.setText(input);
+                    }
                 }
             }
         });
 
 
-
     }
 
-    //method which checks if passed character is a number 1-9.
+    //method returns true if passed character is a number 1-9, false if something else
     public boolean isNum(char c){
         if(c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5'
-                || c == '6' || c == '7' || c == '8' || c == '9') {
-            //Toast.makeText(this, "is a number", Toast.LENGTH_SHORT).show();
+                || c == '6' || c == '7' || c == '8' || c == '9')
             return true;
-        }
-        else {
-            //Toast.makeText(this, "is NO number", Toast.LENGTH_SHORT).show();
+        else
             return false;
-        }
     }
+
+    //method returns true if passed character is an operator, false if something else.
+    public boolean isOperator(char c){
+        if(c == '+' || c == '-' || c == '÷' || c == '×')
+            return true;
+        else
+            return false;
+    }
+
+    //method returns true if input is empty, false if input is not empty
+    public boolean isEmpty(StringBuilder sb){
+        if(sb.length() == 0)
+            return true;
+        else
+            return false;
+    }
+
+    //method overwrites operator if user tries to input an operator immediately after another.
+    public void overwriteOp(char op){
+        if(isOperator(input.charAt(input.length() - 1)))
+            input.setCharAt(input.length() - 1, op);
+    }
+
+
 }
