@@ -200,6 +200,13 @@ public class CalculatorActivity extends AppCompatActivity {
                     textViewInput.setText(input);
                     return;
                 }
+                //if most recent character is a closing parentheses, add "×(˗"
+                if(input.charAt(input.length() - 1) == ')'){
+                    input.append("×(˗");
+                    textViewInput.setText(input);
+                    numOpenParentheses++;
+                    return;
+                }
                 //search through input for the beginning of the current number
                 for(int i = input.length() - 1; i >= 0; i--){
                     char current = input.charAt(i);
@@ -311,26 +318,26 @@ public class CalculatorActivity extends AppCompatActivity {
                 else{}
             }
         });
-
-
     }
 
     public void prepareInput(){
-        while(numOpenParentheses > 0){
-            input.append(')');
-            numOpenParentheses--;
-        }
         input.insert(0, "0+(");
-        input.append(')');
+        numOpenParentheses++;
         for(int i = 0; i < input.length(); i++){
             if(input.charAt(i) == '˗') {
                 input.setCharAt(i, '-');
                 input.insert(i - 1, 0);
             }
         }
+        while(numOpenParentheses > 0){
+            input.append(')');
+            numOpenParentheses--;
+        }
     }
     //method checks that the parsing of input will cause no errors
     public boolean validExpression(){
+        if(input.length() == 0)
+            return false;
         if(isOperator(input.charAt(input.length() - 1)))
             return false;
         if((input.charAt(input.length() - 1)) == '(')
@@ -349,7 +356,7 @@ public class CalculatorActivity extends AppCompatActivity {
 
     //method returns true if passed character is an operator, false if something else.
     public boolean isOperator(char c){
-        if(c == '+' || c == '-' || c == '÷' || c == '×')
+        if(c == '+' || c == '-' || c == '÷' || c == '×' || c == '˗')
             return true;
         else
             return false;
